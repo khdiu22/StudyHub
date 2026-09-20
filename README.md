@@ -120,6 +120,27 @@ Favorite), and errors are displayed next to each field. Following
 the Post/Redirect/Get pattern, a successful feedback submission
 redirects to /feedback/thanks/ instead of re-rendering the form.
 
+## Screenshots
+
+Screenshots of the running application are available in the
+`Screenshots/` folder (see `Screenshots_Project.pdf`), covering:
+
+- **Home Page** — welcome banner, "What You Can Do Here" feature
+  grid, and the Featured Resources section
+- **Resource List** — full list and filtered views (All, Article,
+  Link, Video) using the `?type=` query parameter
+- **Resource Detail** — Overview tab, and the "Already in your
+  favorites" state after adding a resource
+- **Favorites Page** — session-based favorites list with a Remove
+  option
+- **Preferences Page** — theme switcher (Light / Dark) and the
+  resulting site-wide appearance change
+- **Feedback Form** — validation errors (e.g. minimum message
+  length) and the successful submission / thank-you page
+  (Post/Redirect/Get)
+- **404 Not Found Page** — custom error page for invalid resource
+  IDs, styled consistently with the rest of the site
+
 ## Known Limitations
 
 - Resource data is hardcoded in core/resources.py, not stored in a
