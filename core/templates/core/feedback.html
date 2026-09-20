@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Feedback - StudyHub{% endblock %}
+{% block content %}
+    <section class="page">
+        <h1>Send Feedback</h1>
+        {% if form.non_field_errors %}
+            <div class="form-errors">
+                {% for error in form.non_field_errors %}<p>{{ error }}</p>{% endfor %}
+            </div>
+        {% endif %}
+        <form method="post" class="feedback-form">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-row">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="field-errors">
+                            {% for error in field.errors %}<p>{{ error }}</p>{% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn">Submit Feedback</button>
+        </form>
+    </section>
+{% endblock %}
