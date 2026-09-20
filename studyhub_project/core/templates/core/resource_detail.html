@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}{{ resource.title }} - StudyHub{% endblock %}
+{% block content %}
+    <section class="page">
+        <a href="{% url 'core:resource_list' %}" class="back-link">&larr; Back to Resources</a>
+        <span class="resource-type">{{ resource.type }}</span>
+        <h1>{{ resource.title }}</h1>
+
+        <div class="tab-bar">
+            <a href="?tab=overview" class="filter-link {% if active_tab == 'overview' %}active{% endif %}">Overview</a>
+            <a href="?tab=details" class="filter-link {% if active_tab == 'details' %}active{% endif %}">Details</a>
+        </div>
+
+        {% if active_tab == 'details' %}
+            <div class="tab-content">
+                <p>{{ resource.description }}</p>
+                <p><strong>Resource ID:</strong> {{ resource.id }}</p>
+                <p><strong>Type:</strong> {{ resource.type }}</p>
+                <p><strong>Link:</strong> <a href="{{ resource.url }}" target="_blank" rel="noopener">{{ resource.url }}</a></p>
+            </div>
+        {% else %}
+            <div class="tab-content">
+                <p>{{ resource.description }}</p>
+            </div>
+        {% endif %}
+
+        {% if is_favorite %}
+            <p class="favorite-status">&#9733; Already in your favorites.</p>
+        {% else %}
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn">Add to Favorites</button>
+            </form>
+        {% endif %}
+    </section>
+{% endblock %}

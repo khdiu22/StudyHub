@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Thank You - StudyHub{% endblock %}
+{% block content %}
+    <section class="page thank-you-page">
+        {% if submitted_name %}
+            <h1>Thank you, {{ submitted_name }}!</h1>
+        {% else %}
+            <h1>Thank you for your feedback!</h1>
+        {% endif %}
+        <p>We appreciate you taking the time to help us improve StudyHub.</p>
+        <a href="{% url 'core:home' %}" class="btn">Back to Home</a>
+    </section>
+{% endblock %}
